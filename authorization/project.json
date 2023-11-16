@@ -1,0 +1,37 @@
+{
+  "name": "authorization",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "authorization/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/authorization",
+        "tsConfig": "authorization/tsconfig.lib.json",
+        "packageJson": "authorization/package.json",
+        "main": "authorization/src/index.ts",
+        "assets": ["authorization/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "authorization/**/*.ts",
+          "authorization/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "authorization/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}
